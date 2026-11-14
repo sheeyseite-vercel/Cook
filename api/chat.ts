@@ -30,6 +30,12 @@ function allow(ip: string): boolean {
 }
 
 export default async function handler(req: any, res: any) {
+  // يسمح لتطبيق الهاتف (Capacitor) بالاتصال من أصل مختلف
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  if (req.method === 'OPTIONS') return res.status(204).end();
+
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'الطريقة غير مسموحة' });

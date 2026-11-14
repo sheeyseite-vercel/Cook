@@ -30,7 +30,9 @@ export default function Chef() {
     setText('');
     setBusy(true);
     try {
-      const res = await fetch('/api/chat', {
+      // في تطبيق الهاتف يجب أن يكون العنوان كاملاً (VITE_API_BASE)، وعلى الويب يكفي المسار النسبي
+      const base = (import.meta.env.VITE_API_BASE as string | undefined) ?? '';
+      const res = await fetch(`${base}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: next.map((m) => ({ role: m.role, content: m.text })) }),

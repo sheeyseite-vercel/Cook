@@ -17,8 +17,9 @@ npm run dev
 ## الصور الحقيقية للوصفات
 ضع صورة لكل وصفة في `public/images/recipes/` باسم معرّف الوصفة، مثل `couscous.webp` أو `makroud.jpg`. المعرّفات في `src/data/recipes.ts`. إن لم توجد صورة يظهر رسم بديل. استعمل صوراً تملك حقوقها أو مجانية الترخيص (Unsplash، Pexels).
 
-## تحويله إلى تطبيق هاتف لاحقاً
-أضف Capacitor (`@capacitor/core` و`@capacitor/cli`) ثم `npx cap add android` و`npx cap add ios`.
+## ملف APK لأندرويد
+عند كل دفع إلى `main` يبني GitHub Actions ملف `nakha.apk` (Capacitor) وينشره في صفحة Releases وفي Artifacts. افتح صفحة Releases من هاتفك، نزّل الملف وثبّته (يجب السماح بالتثبيت من مصادر غير معروفة). النسخة موقّعة بمفتاح التطوير (debug) وهي مناسبة للتجربة الشخصية. للنشر على Google Play تحتاج نسخة release بتوقيعك الخاص.
+عنوان المساعد الذكي للتطبيق مضبوط في `VITE_API_BASE` داخل `.github/workflows/android-apk.yml`.
 
 ## إضافة وصفة
 أضف عنصراً جديداً في `src/data/recipes.ts` بنفس شكل الوصفات الموجودة.
